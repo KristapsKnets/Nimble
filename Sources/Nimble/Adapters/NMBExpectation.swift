@@ -52,9 +52,7 @@ public class NMBExpectation: NSObject {
     }
 
     private var expectValue: Expectation<NSObject> {
-        return expect(_file, line: _line) {
-            self._actualBlock() as NSObject?
-        }
+        return expect(self._actualBlock() as NSObject?, file: _file, line: _line)
     }
 
     @objc public var withTimeout: (TimeInterval) -> NMBExpectation {
