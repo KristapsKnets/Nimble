@@ -4,7 +4,7 @@ import PackageDescription
 let package = Package(
     name: "Nimble",
     platforms: [
-      .macOS(.v10_10), .iOS(.v8), .tvOS(.v9)
+        .iOS(.v11)
     ],
     products: [
         .library(name: "Nimble", targets: ["Nimble"]),
@@ -16,14 +16,7 @@ let package = Package(
         .target(
             name: "Nimble", 
             dependencies: {
-                #if os(macOS)
-                return [
-                    "CwlPreconditionTesting",
-                    .product(name: "CwlPosixPreconditionTesting", package: "CwlPreconditionTesting")
-                ]
-                #else
                 return []
-                #endif
             }()
         ),
         .testTarget(
